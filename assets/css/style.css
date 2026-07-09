@@ -175,8 +175,12 @@ p { color: var(--gray); margin: 0 0 18px; }
   z-index: 100;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 140px 48px 120px;
+  /* flex-start (not center): with 8 nav links, centered content can
+     overflow symmetrically past the reserved top/bottom padding and
+     collide with the absolutely-positioned brand/social-icons siblings.
+     Starting at the top guarantees it never invades that reserved space. */
+  justify-content: flex-start;
+  padding: 128px 48px 104px;
   overflow-y: auto;
   transform: translateX(100%);
   transition: transform 0.35s ease;
@@ -192,27 +196,30 @@ p { color: var(--gray); margin: 0 0 18px; }
   display: flex; align-items: center; gap: 10px;
 }
 .nav-panel .brand { position: absolute; top: 32px; left: 48px; }
-.nav-panel .brand-logo { height: 52px; width: auto; display: block; }
-.nav-panel .brand .sub { color: var(--gray); font-size: 14px; margin-top: 8px; }
-.nav-panel nav { display: flex; flex-direction: column; gap: 8px; }
+.nav-panel .brand-logo { height: 44px; width: auto; display: block; }
+.nav-panel .brand .sub { color: var(--gray); font-size: 12px; margin-top: 6px; }
+.nav-panel nav { display: flex; flex-direction: column; gap: 4px; }
 .nav-panel nav a {
   font-family: var(--font-heading);
-  font-size: 42px;
+  font-size: 32px;
   font-weight: 700;
   color: var(--gray);
-  padding: 8px 0;
+  padding: 5px 0;
+  line-height: 1.2;
 }
 .nav-panel nav a:hover { color: var(--white); }
 .nav-panel .panel-socials {
   position: absolute;
-  bottom: 40px; left: 48px;
+  bottom: 32px; left: 48px;
   display: flex; gap: 14px;
 }
 @media (max-width: 600px) {
-  .nav-panel nav a { font-size: 30px; }
-  .nav-panel .brand { left: 24px; }
-  .nav-panel .close-btn { right: 24px; }
-  .nav-panel .panel-socials { left: 24px; }
+  .nav-panel { padding: 112px 24px 96px; }
+  .nav-panel nav a { font-size: 24px; padding: 4px 0; }
+  .nav-panel .brand { top: 24px; left: 24px; }
+  .nav-panel .brand-logo { height: 38px; }
+  .nav-panel .close-btn { top: 24px; right: 24px; }
+  .nav-panel .panel-socials { bottom: 24px; left: 24px; }
 }
 
 /* Home page: header floats transparently over the hero video, which
