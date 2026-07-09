@@ -621,7 +621,10 @@ input[type="email"], input[type="text"], input[type="tel"], textarea {
 /* ---------- Video testimonial callout ---------- */
 .video-callout {
   position: relative;
-  height: 380px;
+  /* Matches the live site exactly: the video box is 16:9 (measured
+     1238x696 on the original), not a fixed height, so it scales
+     correctly with the container instead of looking stretched/squashed. */
+  aspect-ratio: 16 / 9;
   border-radius: 0;
   overflow: hidden;
   display: flex;
