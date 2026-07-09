@@ -43,8 +43,22 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Hero background video: same idea — no controls bar until clicked.
+  // The source file has ~1.3s of black at the very start, so we skip
+  // straight past it on load and again every time it loops (looping is
+  // handled manually here instead of the native `loop` attribute so we
+  // can re-seek past the black before the restart is visible).
   var heroVideo = document.querySelector('.hero-video');
   if (heroVideo) {
+    var HERO_SKIP = 1.5;
+    function heroSkipIntro() {
+      if (heroVideo.currentTime < HERO_SKIP) heroVideo.currentTime = HERO_SKIP;
+    }
+    heroVideo.addEventListener('loadedmetadata', heroSkipIntro);
+    if (heroVideo.readyState >= 1) heroSkipIntro();
+    heroVideo.addEventListener('ended', function () {
+      heroVideo.currentTime = HERO_SKIP;
+      heroVideo.play();
+    });
     heroVideo.addEventListener('click', function () {
       heroVideo.controls = true;
     });
