@@ -260,6 +260,10 @@ body.home-hero-page .site-header {
   position: absolute; inset: 0;
   background: rgba(0, 0, 0, 0.33);
   z-index: 1;
+  /* Let clicks pass through to the video's native control bar
+     underneath (volume/play-pause) instead of being caught by
+     this decorative darkening layer. */
+  pointer-events: none;
 }
 .hero .container { position: relative; z-index: 2; text-align: center; }
 .hero .btn-row { justify-content: center; }
