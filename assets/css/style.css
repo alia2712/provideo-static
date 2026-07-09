@@ -130,6 +130,14 @@ p { color: var(--gray); margin: 0 0 18px; }
   .logo { margin-left: 0; }
 }
 
+/* iPad landscape (and similar mid-width screens, ~1151-1400px) still show
+   the full desktop nav, but aren't wide enough to absorb the large
+   negative logo offset below — it was pushing the logo mark off the
+   left edge of the screen and clipping it. Ease it back in gradually. */
+@media (min-width: 1151px) and (max-width: 1400px) {
+  .logo { margin-left: -20px; }
+}
+
 .breadcrumb {
   font-size: 13px;
   color: var(--gray-dark);
