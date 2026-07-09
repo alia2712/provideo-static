@@ -210,7 +210,9 @@ p { color: var(--gray); margin: 0 0 18px; }
 }
 @media (max-width: 600px) {
   .nav-panel nav a { font-size: 30px; }
-  .nav-panel .brand, .nav-panel .close-btn, .nav-panel .panel-socials { left: 24px; right: 24px; }
+  .nav-panel .brand { left: 24px; }
+  .nav-panel .close-btn { right: 24px; }
+  .nav-panel .panel-socials { left: 24px; }
 }
 
 /* Home page: header floats transparently over the hero video, which
