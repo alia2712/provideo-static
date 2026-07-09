@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // "See What They Said" video callouts: play button actually plays the video.
+  // Native player controls (volume/play-pause bar) stay hidden until the
+  // visitor clicks into the video, then they reveal.
   document.querySelectorAll('.video-callout').forEach(function (callout) {
     var video = callout.querySelector('video');
     var btn = callout.querySelector('.play-btn');
@@ -25,9 +27,11 @@ document.addEventListener('DOMContentLoaded', function () {
       video.muted = false;
       video.currentTime = 0;
       video.play();
+      video.controls = true;
       callout.classList.add('playing');
     });
     video.addEventListener('click', function () {
+      video.controls = true;
       if (video.paused) {
         video.play();
         callout.classList.add('playing');
@@ -37,6 +41,14 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
+  // Hero background video: same idea — no controls bar until clicked.
+  var heroVideo = document.querySelector('.hero-video');
+  if (heroVideo) {
+    heroVideo.addEventListener('click', function () {
+      heroVideo.controls = true;
+    });
+  }
 
   // Hero "View Our Work" opens a modal that plays the reel from the start.
   document.querySelectorAll('[data-video-modal-trigger]').forEach(function (trigger) {
