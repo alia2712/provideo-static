@@ -300,44 +300,48 @@ body.home-hero-page .site-header {
   color: #000;
   padding: 0 6px;
   clip-path: inset(0 100% 0 0);
-  animation-duration: 15.8s;
+  animation-duration: 30.8s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
-/* Each phrase gets its own timeline slice within one shared 15.8s loop
-   (phrases 1-3 hold ~2.2s each, the last phrase holds ~3s longer). */
+/* Each phrase gets its own timeline slice within one shared 30.8s loop:
+   the 4 phrases run back-to-back over the first 15.8s (unchanged timing
+   from before, phrases 1-3 hold ~2.2s each, the last phrase holds ~5.2s),
+   then the headline stays blank for a 15s pause before the whole cycle
+   restarts from phrase 1. */
 .hero-phrase:nth-child(1) { animation-name: heroPhraseClip1; }
 .hero-phrase:nth-child(2) { animation-name: heroPhraseClip2; }
 .hero-phrase:nth-child(3) { animation-name: heroPhraseClip3; }
 .hero-phrase:nth-child(4) { animation-name: heroPhraseClip4; }
 @keyframes heroPhraseClip1 {
   0%      { clip-path: inset(0 100% 0 0); }
-  3.17%   { clip-path: inset(0 0 0 0); }
-  17.09%  { clip-path: inset(0 0 0 0); }
-  20.25%  { clip-path: inset(0 100% 0 0); }
+  1.63%   { clip-path: inset(0 0 0 0); }
+  8.77%   { clip-path: inset(0 0 0 0); }
+  10.39%  { clip-path: inset(0 100% 0 0); }
   100%    { clip-path: inset(0 100% 0 0); }
 }
 @keyframes heroPhraseClip2 {
   0%      { clip-path: inset(0 100% 0 0); }
-  20.25%  { clip-path: inset(0 100% 0 0); }
-  23.42%  { clip-path: inset(0 0 0 0); }
-  37.34%  { clip-path: inset(0 0 0 0); }
-  40.51%  { clip-path: inset(0 100% 0 0); }
+  10.39%  { clip-path: inset(0 100% 0 0); }
+  12.01%  { clip-path: inset(0 0 0 0); }
+  19.15%  { clip-path: inset(0 0 0 0); }
+  20.78%  { clip-path: inset(0 100% 0 0); }
   100%    { clip-path: inset(0 100% 0 0); }
 }
 @keyframes heroPhraseClip3 {
   0%      { clip-path: inset(0 100% 0 0); }
-  40.51%  { clip-path: inset(0 100% 0 0); }
-  43.67%  { clip-path: inset(0 0 0 0); }
-  57.59%  { clip-path: inset(0 0 0 0); }
-  60.76%  { clip-path: inset(0 100% 0 0); }
+  20.78%  { clip-path: inset(0 100% 0 0); }
+  22.40%  { clip-path: inset(0 0 0 0); }
+  29.54%  { clip-path: inset(0 0 0 0); }
+  31.17%  { clip-path: inset(0 100% 0 0); }
   100%    { clip-path: inset(0 100% 0 0); }
 }
 @keyframes heroPhraseClip4 {
   0%      { clip-path: inset(0 100% 0 0); }
-  60.76%  { clip-path: inset(0 100% 0 0); }
-  63.92%  { clip-path: inset(0 0 0 0); }
-  96.84%  { clip-path: inset(0 0 0 0); }
+  31.17%  { clip-path: inset(0 100% 0 0); }
+  32.78%  { clip-path: inset(0 0 0 0); }
+  49.68%  { clip-path: inset(0 0 0 0); }
+  51.30%  { clip-path: inset(0 100% 0 0); }
   100%    { clip-path: inset(0 100% 0 0); }
 }
 @media (prefers-reduced-motion: reduce) {
