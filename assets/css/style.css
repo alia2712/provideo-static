@@ -70,7 +70,6 @@ p { color: var(--gray); margin: 0 0 18px; }
 /* ---------- Header ---------- */
 .top-bar {
   background: var(--bg-alt);
-  border-bottom: 1px solid var(--border);
   font-size: 14px;
 }
 .top-bar .container {
@@ -657,7 +656,6 @@ input[type="email"], input[type="text"], input[type="tel"], textarea {
 
 /* ---------- Footer ---------- */
 .site-footer {
-  border-top: 1px solid var(--border);
   padding: 40px 0;
   text-align: center;
   color: var(--gray-dark);
