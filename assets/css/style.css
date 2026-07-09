@@ -93,6 +93,11 @@ p { color: var(--gray); margin: 0 0 18px; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* Guaranteed minimum breathing room between logo / nav / socials —
+     without this, justify-content:space-between can collapse to a
+     zero gap at narrower widths where the nav is nearly as wide as
+     the header itself. */
+  gap: 24px;
 }
 
 .logo { display: flex; align-items: center; line-height: 1; margin-left: -140px; }
@@ -131,11 +136,13 @@ p { color: var(--gray); margin: 0 0 18px; }
 }
 
 /* iPad landscape (and similar mid-width screens, ~1151-1400px) still show
-   the full desktop nav, but aren't wide enough to absorb the large
-   negative logo offset below — it was pushing the logo mark off the
-   left edge of the screen and clipping it. Ease it back in gradually. */
+   the full desktop nav, but the nav is nearly as wide as the header at
+   these sizes — there's no free space left for the large negative logo
+   offset below to work with, so it was pushing the logo mark into (and
+   past) the nav links. No shift at all here; the `gap` above still
+   keeps everything comfortably spaced out. */
 @media (min-width: 1151px) and (max-width: 1400px) {
-  .logo { margin-left: -20px; }
+  .logo { margin-left: 0; }
 }
 
 .breadcrumb {
