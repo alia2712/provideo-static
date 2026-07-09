@@ -100,7 +100,7 @@ p { color: var(--gray); margin: 0 0 18px; }
   gap: 24px;
 }
 
-.logo { display: flex; align-items: center; line-height: 1; margin-left: -140px; }
+.logo { display: flex; align-items: center; line-height: 1; margin-left: -140px; flex-shrink: 0; }
 .logo-mark { height: 55px; width: auto; flex-shrink: 0; }
 
 /* Desktop horizontal nav (matches live site) */
@@ -126,22 +126,19 @@ p { color: var(--gray); margin: 0 0 18px; }
 .header-right { display: flex; align-items: center; gap: 20px; }
 .menu-toggle { display: none; }
 
-@media (max-width: 1150px) {
+/* The 8-item desktop nav needs ~1190px of unbroken width just for its
+   own links (they can't wrap), plus the logo and social/hamburger
+   cluster on either side — it doesn't reliably fit until roughly
+   1420px. Below that (which covers every iPad, including 12.9" Pro
+   landscape at 1366px) the nav has nowhere to go, and flexbox was
+   squeezing the shrinkable logo image down to a sliver to compensate.
+   Switching to the hamburger menu earlier avoids that entirely. */
+@media (max-width: 1440px) {
   .main-nav { display: none; }
   .menu-toggle { display: flex; }
   /* The large negative offset that shifts the logo left on wide desktop
      screens has no room to work with here — reset it so the logo stays
      fully on-screen. */
-  .logo { margin-left: 0; }
-}
-
-/* iPad landscape (and similar mid-width screens, ~1151-1400px) still show
-   the full desktop nav, but the nav is nearly as wide as the header at
-   these sizes — there's no free space left for the large negative logo
-   offset below to work with, so it was pushing the logo mark into (and
-   past) the nav links. No shift at all here; the `gap` above still
-   keeps everything comfortably spaced out. */
-@media (min-width: 1151px) and (max-width: 1400px) {
   .logo { margin-left: 0; }
 }
 
